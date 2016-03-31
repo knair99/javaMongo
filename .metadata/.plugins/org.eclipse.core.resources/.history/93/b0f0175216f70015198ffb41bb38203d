@@ -1,0 +1,34 @@
+package com.nimma.jersey.iot;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+
+import com.nimma.jersey.server.iotdatum.IOTDatum;
+
+public class RegisterIOT {
+
+	public static void main(String[] args){
+		
+		RegisterIOTWithServer(1, 1, "5129094874");
+		
+	}
+	
+	public static void RegisterIOTWithServer(int id, int device_id, String phone){
+		IOTDatum idata = new IOTDatum();
+		
+		idata.setdeviceid(device_id);
+		idata.setid(id);
+		idata.setphonenumber(phone);
+		
+		//Push this to server
+		//Setup client
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("http://localhost:8080/com.nimma.jersey.server/rest");
+		
+		
+		
+	}
+	
+	
+}

@@ -1,0 +1,8 @@
+package com.nimma.jersey.server.iotdatum;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class IOTDatum {
+
+}

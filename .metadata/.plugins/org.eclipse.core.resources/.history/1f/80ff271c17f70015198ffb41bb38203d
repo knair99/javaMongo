@@ -1,0 +1,37 @@
+package com.nimma.jersey.server;
+
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.nimma.jersey.server.iotdatum.IOTDatum;
+
+import java.util.HashMap;
+
+
+@Path("/register")
+public class Register {
+	
+	public static HashMap<Integer, String> clients = new HashMap<Integer, String>();
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response postData(IOTDatum data) {
+				
+
+		
+		String new_data;
+		
+		String result = "Hello client: " + data.getdeviceid() + " : Your discounts: " + new_data;
+		result = result + " Your dept: " + data.getid();
+
+		
+		
+		return Response.status(201).entity(result).build();
+		
+	}
+
+}

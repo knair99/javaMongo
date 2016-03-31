@@ -1,0 +1,5 @@
+package com.nimma.jersey.server;
+
+public class Register {
+
+}

@@ -1,0 +1,28 @@
+package com.nimma.jersey.server.iotdatum;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@XmlRootElement
+public class IOTDatum {
+	private int id; //Department ID
+	private String phone_number; //Name of item
+	private int device_id;
+	
+	
+	//Dummy c-tor 
+	public IOTDatum(){
+		
+	}
+	
+	@JsonCreator
+	public IOTDatum (@JsonProperty("id") int id, @JsonProperty("phone_number") String s,
+						@JsonProperty("device_id") int dev_id){ 
+		this.id = id;
+		this.phone_number = s;
+		this.device_id = disdev_id;
+	}
+
+}

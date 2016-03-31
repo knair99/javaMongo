@@ -9,7 +9,6 @@ import javax.ws.rs.core.Response;
 
 import com.nimma.jersey.server.clientdatum.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 

@@ -1,0 +1,8 @@
+package com.nimma.jersey.iot;
+
+public class RegisterIOT {
+
+	public static void main(){
+		
+	}
+}

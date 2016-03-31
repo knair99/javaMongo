@@ -1,0 +1,19 @@
+package com.nimma.jersey.iot;
+
+import com.nimma.jersey.server.iotdatum.IOTDatum;
+
+public class RegisterIOT {
+
+	public static void main(String[] args){
+		
+		
+	}
+	
+	public static void RegisterIOTWithServer(int id, int device_id, String phone){
+		IOTDatum idata = new IOTDatum();
+		
+		idata.setdeviceid(device_id);
+		idata.setid(id);
+		idata.setphonenumber(phone);
+	}
+}

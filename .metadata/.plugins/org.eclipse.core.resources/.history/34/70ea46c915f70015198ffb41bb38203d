@@ -1,0 +1,12 @@
+package com.nimma.jersey.iot;
+
+import com.nimma.jersey.server.iotdatum.IOTDatum;
+
+public class RegisterIOT {
+
+	public static void main(String[] args){
+		
+		IOTDatum idata = new IOTDatum();
+		
+	}
+}

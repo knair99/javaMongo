@@ -58,7 +58,7 @@ public class MongoServerSide {
 	}
 	
 	//R- Method to get client Data for publishing sales info to server
-	public ArrayList<String> ReadServerData(){
+	public ArrayList<String> FindByDeptId(int dept_id){
 		
 		ArrayList<String> json_items = new ArrayList<String>();
 		
@@ -66,7 +66,7 @@ public class MongoServerSide {
 		
 		MongoDatabase db = mongoClient.getDatabase( "server_sales" );
 		
-		FindIterable<Document> collection = db.getCollection("sales_collections").find();
+		FindIterable<Document> collection = db.getCollection("sales_collections").find(new Document("id", dept_id));
 		
 		//Just like client side, iterate through each document
 		collection.forEach(new Block<Document>() {
@@ -106,6 +106,7 @@ public class MongoServerSide {
 		
 	}
 	
+
 	public Boolean isMyJSONValid(String test){
 		try {
 	        new JSONObject(test);

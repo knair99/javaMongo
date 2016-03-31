@@ -1,0 +1,5 @@
+package com.nimma.jersey.server.iotdatum;
+
+public class IOTDatum {
+
+}
