@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;com.nimma.jersey.client.MongoClientSide.isValidJSON(...)&apos; to &apos;isMyJSONValid&apos;&#x0A;- Original project: &apos;com.nimma.jersey.client&apos;&#x0A;- Original element: &apos;com.nimma.jersey.client.MongoClientSide.isValidJSON(...)&apos;&#x0A;- Renamed element: &apos;com.nimma.jersey.client.MongoClientSide.isMyJSONValid(...)&apos;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;isValidJSON&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;com.nimma.jersey.client{MongoClientSide.java[MongoClientSide~isValidJSON~QString;" name="isMyJSONValid" references="true" stamp="1459401401837" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;com.nimma.jersey.client.Responder.java&apos; to &apos;ClientSide.java&apos;&#x0A;- Original project: &apos;com.nimma.jersey.client&apos;&#x0A;- Original element: &apos;com.nimma.jersey.client.Responder.java&apos;&#x0A;- Renamed element: &apos;com.nimma.jersey.client.ClientSide.java&apos;" description="Rename compilation unit &apos;Responder.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;com.nimma.jersey.client{Responder.java" name="ClientSide.java" references="false" stamp="1458790621763" version="1.0"/>
+</session>

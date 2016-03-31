@@ -1,0 +1,42 @@
+package com.nimma.jersey.server.model;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.core.MediaType;
+
+@Path("/todo")
+public class StartResource {
+  // This method is called if XMLis request
+  @GET
+  @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+  public Start getXML() {
+    Start todo = new Start();
+    todo.setId(1);
+    todo.setData("data1");
+    return todo;
+  }
+  
+  // This can be used to test the integration with the browser
+  @GET
+  @Produces({ MediaType.TEXT_XML })
+  public Start getHTML() {
+    Start todo = new Start();
+    todo.setId(1);
+    todo.setData("data1");
+    return todo;
+  }
+  
+//This can be used to test the integration with the browser
+ @POST
+ @Consumes({ MediaType.TEXT_PLAIN })
+ public Start postHTML(string data) {
+   Start todo = new Start();
+   todo.setId(1);
+   todo.setData("data1");
+   return todo;
+ }
+
+} 

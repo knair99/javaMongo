@@ -1,0 +1,5 @@
+package com.nimma.jersey.server.model;
+
+public class ClientDatum {
+
+}

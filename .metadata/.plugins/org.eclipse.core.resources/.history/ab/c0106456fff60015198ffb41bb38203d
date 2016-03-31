@@ -1,0 +1,73 @@
+package com.nimma.jersey.client;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+
+import com.mongodb.client.MongoDatabase;
+import com.nimma.jersey.server.clientdatum.ClientDatum;
+
+import org.bson.Document;
+
+
+/*
+JSON for sales schema
+{
+   "id" : 1,
+   "item_name" : "Every Man Jack",
+   "dept_name" : "Personal Care",
+   "discount" : "50% off"
+}
+
+*/
+
+
+public class MongoClientSide {
+
+	//Method to test connections and DBs
+	public void TestMongo(){
+		
+		MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
+		
+		MongoDatabase db = mongoClient.getDatabase( "skillset" );
+		
+		MongoCollection<Document> collection = db.getCollection("skills");
+		
+		System.out.println("count = " + collection.count());
+		
+		mongoClient.close();
+		
+	}
+	
+	
+	//C- Method to create static Data
+	public void CreateClientData(int id, String dept_name, String discount, String item_name){
+		
+		ClientDatum cd = new ClientDatum();
+		
+		cd.setid(id);
+		cd.setdeptname(dept_name);
+		cd.setitemname(item_name);
+		cd.setdiscount(discount);
+		
+		System.out.println(cd.toString());
+		
+	}
+	
+	//R- Method to get client Data for publishing sales info to server
+	public void ReadClientData(){
+		
+	}
+	
+	//U-Method to update client Data with discount or item updates
+	public void UpdateClientData(String item_name, String new_discount){
+		
+	}
+	
+	//D- Method to remove an item from collections
+	public void DeleteClientData(String item_name){
+		
+	}
+	
+}
+
+
