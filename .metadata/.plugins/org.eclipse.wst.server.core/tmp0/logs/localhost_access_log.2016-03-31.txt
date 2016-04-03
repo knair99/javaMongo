@@ -18,3 +18,4 @@
 127.0.0.1 - - [31/Mar/2016:01:12:30 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 107
 127.0.0.1 - - [31/Mar/2016:01:13:54 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 107
 127.0.0.1 - - [31/Mar/2016:01:14:35 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 112
+127.0.0.1 - - [31/Mar/2016:01:16:10 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 113

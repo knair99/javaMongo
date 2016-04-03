@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;iot_id&apos; in &apos;com.nimma.jersey.server.Update.updateIOTs(...)&apos; to &apos;iot_dept_id&apos;&#x0A;- Original project: &apos;com.nimma.jersey.server&apos;&#x0A;- Original element: &apos;com.nimma.jersey.server.Update.updateIOTs(IOTDatum).iot_id&apos;&#x0A;- Renamed element: &apos;iot_id&apos;&#x0A;- Update references to refactored element" description="Rename local variable &apos;iot_id&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;com.nimma.jersey.server{Update.java[Update~updateIOTs~QIOTDatum;@iot_id!1042!1067!1046!1051!I!0!false" name="iot_dept_id" references="true" stamp="1459713637399" version="1.0"/>
+</session>

@@ -1,0 +1,7 @@
+127.0.0.1 - - [01/Apr/2016:04:07:11 -0700] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [01/Apr/2016:04:07:54 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 500 6598
+127.0.0.1 - - [01/Apr/2016:04:07:57 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 113
+127.0.0.1 - - [01/Apr/2016:04:08:08 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 113
+127.0.0.1 - - [01/Apr/2016:04:08:21 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 31
+127.0.0.1 - - [01/Apr/2016:04:08:30 -0700] "POST /com.nimma.jersey.server/rest/register HTTP/1.1" 201 102
+127.0.0.1 - - [01/Apr/2016:04:40:05 -0700] "GET / HTTP/1.1" 404 951

@@ -20,20 +20,33 @@ public class ClientSide {
 		MongoClientSide mcs = new MongoClientSide();
 		
 		//CRUD - create
-		//mcs.CreateClientData(3, "asian food", "40% off", "mahatma rice");
+		//mcs.CreateClientData(2, "breakfast", "40% off", "kellogs");
+		//push using "read"
+		
 		
 		//CRUD - read
-		ArrayList<String> items = mcs.ReadClientData();
+		/*ArrayList<String> new_data = mcs.ReadClientData();
 		//Only push if there is data already
-		if(items.size() > 0){
+		if(new_data.size() > 0){
 		
-			pushToServer(items);
-		}
-
+			pushToServer(new_data, "read");
+		}*/
+	
+		/*U-update
+		ArrayList<String> new_data = mcs.UpdateClientData("kellogs", "90% off");
+		System.out.println(new_data);
+		pushToServer(new_data, "update"); //set true for updates
+		*/
+		
+		//Delete
+		ArrayList<String> new_data = mcs.DeleteClientData("kellogs");
+		pushToServer(new_data, "delete");
+		
+		
 	}
 	
 //Push data to server
-public static void pushToServer(ArrayList<String> items_collections){
+public static void pushToServer(ArrayList<String> items_collections, String crud){
 	try {
 		
 		String[]  items = new String [items_collections.size()];
@@ -46,10 +59,31 @@ public static void pushToServer(ArrayList<String> items_collections){
 				
 		for( String single_item: items){
 			
+			Response r2;
+			
+			System.out.println(single_item);
+			
 			//Handle response
 			System.out.println("JSON from client : " + single_item);
-			Response r2 = target.path("/posts").request(MediaType.APPLICATION_JSON_TYPE).post(
+			
+			if(crud == "read"){ //for create and read
+				
+				 r2 = target.path("/posts").request(MediaType.APPLICATION_JSON_TYPE).post(
 					Entity.entity(single_item, MediaType.APPLICATION_JSON_TYPE));
+			}
+			else if (crud == "delete") { //for deleting server data
+				r2 = target.path("/update").path("/delete").request(MediaType.APPLICATION_JSON_TYPE).post(
+						Entity.entity(single_item, MediaType.APPLICATION_JSON_TYPE));
+		
+			}
+			else if (crud == "update"){ //for updates
+				
+				 r2 = target.path("/update").request(MediaType.APPLICATION_JSON_TYPE).post(
+						Entity.entity(single_item, MediaType.APPLICATION_JSON_TYPE));
+			}
+			else{
+				return; //invalid input, give up
+			}
 	
 			//Output
 			System.out.println("Server response:");

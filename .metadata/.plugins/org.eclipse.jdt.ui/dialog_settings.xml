@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<item value="JavaSE-1.8" key="org.eclipse.jdt.ui.last.selected.execution.enviroment"/>
-	<item value="/Users/kprasad/Dropbox/nimma/273/lab1" key="org.eclipse.jdt.ui.lastextjar"/>
+	<item value="/Users/kprasad/Documents/eclipse_workspace/com.nimma.jersey.server/WebContent/WEB-INF/lib" key="org.eclipse.jdt.ui.lastextjar"/>
 	<item value="/Users/kprasad/Dropbox/nimma/273/lab1/client" key="org.eclipse.jdt.ui.last.external.project"/>
 	<section name="RefactoringWizard.preview">
 		<item value="600" key="width"/>
@@ -22,9 +22,13 @@
 		<item value="1" key="rootMode"/>
 		<item value="false" key="linkWithEditor"/>
 	</section>
+	<section name="BreadcrumbItemDropDown">
+	</section>
 	<section name="NewClassWizardPage">
 		<item value="false" key="create_constructor"/>
 		<item value="true" key="create_unimplemented"/>
+	</section>
+	<section name="RenameInformationPopup">
 	</section>
 	<section name="ClasspathContainerSelectionPage">
 		<item value="9" key="index"/>

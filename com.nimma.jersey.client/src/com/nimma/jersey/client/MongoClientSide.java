@@ -1,8 +1,11 @@
 package com.nimma.jersey.client;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.client.model.Filters;
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.nimma.jersey.server.clientdatum.ClientDatum;
 
@@ -98,15 +101,87 @@ public class MongoClientSide {
 	}
 	
 	//U-Method to update client Data with discount or item updates
-	public void UpdateClientData(String item_name, String new_discount){
+	public ArrayList<String> UpdateClientData(String item_name, String new_discount){
+		
+		MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
+		
+		MongoDatabase db = mongoClient.getDatabase( "client_sales" );
+		
+		ArrayList<String> json_items = new ArrayList<String>();
+
+		
+		db.getCollection("sales_collections")
+				.updateOne(new Document("item_name", item_name),
+			    new Document("$set", new Document("discount", new_discount)));
+		
+		BasicDBObject whereQuery = new BasicDBObject();
+	    whereQuery.put("item_name", item_name);
+	    FindIterable<Document> cursor = db.getCollection("sales_collections")
+	    		.find(whereQuery).limit(1);
+	    
+	    cursor.forEach(new Block<Document>() {
+		    @Override
+		    public void apply(final Document document) {
+		        
+		        JSONObject jsonObj;
+				try {
+					//Remove the db object ID 
+					jsonObj = new JSONObject(document.toJson());
+					jsonObj.remove("_id");
+					
+					//Save as string and add it to array list
+			        String record = jsonObj.toString();
+			        System.out.println(record);
+			        
+			        json_items.add(record);
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        
+		    }
+		});
+	    
+		mongoClient.close();
+				
+	return json_items;
 		
 	}
 	
 	//D- Method to remove an item from collections
-	public void DeleteClientData(String item_name){
+	public ArrayList<String> DeleteClientData(String item_name) {
+		MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
 		
+		MongoDatabase db = mongoClient.getDatabase( "client_sales" );
+		
+		MongoCollection<Document> col = db.getCollection("sales_collections");
+		
+		Document doc = col.findOneAndDelete(Filters.eq("item_name", item_name));
+		
+		//col.deleteOne(Filters.eq("item_name", item_name));
+		ArrayList<String> json_items = new ArrayList<String>();
+		if(doc != null){
+			JSONObject jsonObj;
+			try {
+				jsonObj = new JSONObject(doc.toJson());
+				jsonObj.remove("_id");
+				
+				json_items.add(jsonObj.toString());
+				System.out.println(json_items);
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+		mongoClient.close();
+		return json_items;
 	}
 	
+	
+	//Sanity check
 	public Boolean isMyJSONValid(String test){
 		try {
 	        new JSONObject(test);

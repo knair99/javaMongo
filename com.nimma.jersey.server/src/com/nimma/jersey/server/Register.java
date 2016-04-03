@@ -22,7 +22,7 @@ public class Register {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response postData(IOTDatum data) {
 				
-		String result = "blank";
+		String result = "";
 		
 		MongoServerSide mss = new MongoServerSide();
 		
