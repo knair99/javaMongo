@@ -1,0 +1,26 @@
+package com.nimma.jersey.iot;
+
+import java.math.BigInteger;
+
+public class Elliptic {
+	
+	public static BigInteger prime;
+	
+	public Elliptic (){
+		
+		p256 = new BigInteger (256);
+		p32 = new BigInteger(32);
+		p9 = new BigInteger(9);
+		
+		
+	}
+	
+	public BigInteger elliptic_multiply(BigInteger x, BigInteger y, BigInteger prime){
+		
+		
+		
+		return null;
+		
+	}
+
+}

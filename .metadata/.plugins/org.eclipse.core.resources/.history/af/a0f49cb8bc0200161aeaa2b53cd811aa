@@ -1,0 +1,14 @@
+package com.elliptic.curve.crypt;
+
+import java.math.BigInteger;
+
+public class Main {
+	
+	public static void main(String[] args){
+		
+		Elliptic e = new Elliptic();
+		
+		BigInteger result = e.elliptic_multiply(new BigInteger("1"), new BigInteger("2"));
+	}
+
+}

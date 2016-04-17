@@ -1,0 +1,57 @@
+package com.nimma.jersey.server;
+
+
+
+import java.math.BigInteger;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.nimma.jersey.server.eccdatum.ECCDatum;
+
+
+
+
+@Path("/security")
+public class Security {
+		
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response postData(ECCDatum data) {
+				
+		
+		String result = "Hello client: " + " : Your signed message is: " + data.getmessage();
+		
+		EllipticServer e = new EllipticServer();
+		BigInteger[] signature_client = new BigInteger[2];
+		BigInteger[] public_key_client = new BigInteger[2];
+		
+		e.set_private_key(new BigInteger("82789062540303336671629556971861355318538781871393879428414431259789600936815"));
+		e.generate_public_key();
+		
+		signature_client[0] = data.getsignx();
+		signature_client[1] = data.getsignature();
+		
+		
+		
+		if (e.verify_signature(signature_client, data.gethash(), data.get_public_key())){
+			
+			result += "Client verified from signature! Authenticity established";
+		}
+		else{
+			
+			result += "Client could not be verified from signature! Please generate a valid digital signature for authentication";
+		}
+		
+		
+		
+		return Response.status(201).entity(result).build();
+		
+	}
+
+}
+
+

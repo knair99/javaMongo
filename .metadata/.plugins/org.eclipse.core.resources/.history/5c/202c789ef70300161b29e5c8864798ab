@@ -1,0 +1,39 @@
+package com.nimma.jersey.server;
+
+
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import com.nimma.jersey.server.clientdatum.*;
+
+
+
+
+@Path("/security")
+public class Security {
+		
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response postData(ClientDatum data) {
+				
+		
+		String result = "Hello client: " + data.getid() + " : Your signature so far: " + new_data;
+		result = result + " Your discount: " + data.getdiscount();
+		
+		//Save data into db
+		MongoServerSide mss = new MongoServerSide();
+		mss.CreateServerData(data.getid(),data.getdeptname(), data.getdiscount(), data.getitemname());
+
+		
+		
+		return Response.status(201).entity(result).build();
+		
+	}
+
+}
+
+

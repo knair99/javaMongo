@@ -1,0 +1,15 @@
+package com.nimma.jersey.iot;
+
+import java.math.BigInteger;
+
+public class Elliptic {
+	
+	public BigInteger elliptic_multiply(BigInteger x, BigInteger y, BigInteger prime){
+		
+		
+		
+		return null;
+		
+	}
+
+}

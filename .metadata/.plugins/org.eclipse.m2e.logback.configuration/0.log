@@ -628,3 +628,15 @@
 
 2016-04-03 12:18:10,064 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
 
+2016-04-11 21:37:32,559 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
+
+2016-04-14 18:39:59,914 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
+
+2016-04-14 20:06:04,121 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
+
+2016-04-15 17:21:15,648 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
+
+2016-04-15 20:14:07,754 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
+
+2016-04-16 09:55:03,711 [Thread-6] ERROR org.eclipse.jgit.util.FS - fatal: Could not switch to '/Applications/Xcode.app/Contents/Developer/usr/etc/': No such file or directory
+

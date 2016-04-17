@@ -1,0 +1,11 @@
+package com.nimma.jersey.iot;
+
+import java.math.BigInteger;
+
+public class Elliptic {
+	
+	public BigInteger modular_inverse(){
+		
+	}
+
+}

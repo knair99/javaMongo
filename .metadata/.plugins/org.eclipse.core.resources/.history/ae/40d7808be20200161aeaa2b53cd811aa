@@ -1,0 +1,20 @@
+package com.elliptic.curve.crypt;
+
+import java.math.BigInteger;
+
+public class Main {
+	
+	public static void main(String[] args){
+		
+		Elliptic e = new Elliptic();
+		
+		BigInteger[] result = e.elliptic_multiply(e.private_key, e.Gx);
+		
+		//BigInteger[] result = e.elliptic_add(new BigInteger("13"), new BigInteger("233"),new BigInteger("14"),new BigInteger("400"));
+		
+		//BigInteger result = e.modular_inverse(new BigInteger("17"), new BigInteger("43"));
+		
+		System.out.println(result[0] + ", " +  result[1]);
+	}
+
+}

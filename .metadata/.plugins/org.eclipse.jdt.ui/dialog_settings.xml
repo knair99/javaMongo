@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<item value="JavaSE-1.8" key="org.eclipse.jdt.ui.last.selected.execution.enviroment"/>
 	<item value="/Users/kprasad/Documents/eclipse_workspace/com.nimma.jersey.server/WebContent/WEB-INF/lib" key="org.eclipse.jdt.ui.lastextjar"/>
-	<item value="/Users/kprasad/Dropbox/nimma/273/lab1/client" key="org.eclipse.jdt.ui.last.external.project"/>
+	<item value="/Users/kprasad/Dropbox/nimma/273/ECC" key="org.eclipse.jdt.ui.last.external.project"/>
 	<section name="RefactoringWizard.preview">
 		<item value="600" key="width"/>
 		<item value="400" key="height"/>

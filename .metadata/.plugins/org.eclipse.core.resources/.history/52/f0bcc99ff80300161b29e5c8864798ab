@@ -1,0 +1,67 @@
+package com.nimma.jersey.server.eccdatum;
+
+
+import java.math.BigInteger;
+
+import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+@XmlRootElement
+public class ECCDatum {
+	
+	private String message; //Name of item
+	private BigInteger hash;
+	private BigInteger[] signature;
+	
+	
+	//Dummy c-tor 
+	public ECCDatum(){
+		
+	}
+	
+	@JsonCreator
+	public ECCDatum (@JsonProperty("message") String message, @JsonProperty("hash") BigInteger hash,
+					@JsonProperty("signature") BigInteger signature, @JsonProperty("signature") BigInteger signx){ 
+		this.message = message;
+		this.hash = hash;
+		this.signature = signature;
+	}
+	
+	public void setmessage(String message){
+		this.message = message;
+	}
+	
+	public String getmessage() {
+		return message;
+	}
+	
+	public void sethash(BigInteger hash){
+		this.hash = hash;
+	}
+	
+	public BigInteger gethash() {
+		return hash;
+	}
+	
+	public BigInteger[] getsignature(){
+		return signature;
+	}
+	
+	public void setsignature(BigInteger[] signature){
+		this.signature = signature;
+	}
+	
+	@Override
+	public String toString(){
+		return "{" 
+				+"\"message\": " + message 
+				+ "," + "\"hash\": \"" + hash + "\""
+				+ "," + "\"signature\": \"" +  signature[1] + "\""
+				+ "," + "\"signx\": \"" + signature[0] + "\"" 
+				+ "}";
+	}
+
+}

@@ -1,0 +1,12 @@
+package com.elliptic.curve.crypt;
+
+public class Main {
+	
+	public static void main(String[] args){
+		
+		Elliptic e = new Elliptic();
+		
+		e.elliptic_multiply(1, 2)
+	}
+
+}

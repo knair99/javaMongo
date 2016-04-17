@@ -6,7 +6,6 @@
 <fullyQualifiedTypeName name="javax.ws.rs.POST"/>
 <fullyQualifiedTypeName name="javax.ws.rs.client.Entity"/>
 <fullyQualifiedTypeName name="javax.ws.rs.client.ClientResponseContext"/>
-<fullyQualifiedTypeName name="com.nimma.jersey.server.clientdatum.ClientDatum"/>
 <fullyQualifiedTypeName name="org.json.JSONObject"/>
 <fullyQualifiedTypeName name="org.json.JSONException"/>
 <fullyQualifiedTypeName name="org.json.JSONArray"/>
@@ -18,4 +17,8 @@
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.mongodb.BasicDBObject"/>
 <fullyQualifiedTypeName name="com.mongodb.DBCursor"/>
+<fullyQualifiedTypeName name="com.nimma.jersey.server.clientdatum.ClientDatum"/>
+<fullyQualifiedTypeName name="javax.ws.rs.GET"/>
+<fullyQualifiedTypeName name="com.mongodb.client.MongoCollection"/>
+<fullyQualifiedTypeName name="java.math.BigInteger"/>
 </qualifiedTypeNameHistroy>

@@ -20,17 +20,17 @@ public class ClientSide {
 		MongoClientSide mcs = new MongoClientSide();
 		
 		//CRUD - create
-		//mcs.CreateClientData(2, "breakfast", "40% off", "kellogs");
+		mcs.CreateClientData(1, "breakfast", "40% off", "kellogs");
 		//push using "read"
 		
 		
 		//CRUD - read
-		/*ArrayList<String> new_data = mcs.ReadClientData();
+		ArrayList<String> new_data = mcs.ReadClientData();
 		//Only push if there is data already
 		if(new_data.size() > 0){
 		
 			pushToServer(new_data, "read");
-		}*/
+		}
 	
 		/*U-update
 		ArrayList<String> new_data = mcs.UpdateClientData("kellogs", "90% off");
@@ -39,8 +39,8 @@ public class ClientSide {
 		*/
 		
 		//Delete
-		ArrayList<String> new_data = mcs.DeleteClientData("kellogs");
-		pushToServer(new_data, "delete");
+		//ArrayList<String> new_data = mcs.DeleteClientData("kellogs");
+		//pushToServer(new_data, "delete");
 		
 		
 	}
