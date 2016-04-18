@@ -1,8 +1,10 @@
 package com.nimma.jersey.iot;
 
 import java.io.UnsupportedEncodingException;
+
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -10,6 +12,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.DatatypeConverter;
 
 import com.nimma.jersey.server.EllipticServer;
 import com.nimma.jersey.server.eccdatum.ECCDatum;
@@ -17,7 +20,7 @@ import com.nimma.jersey.server.iotdatum.IOTDatum;
 
 public class RegisterIOT {
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		
 		EllipticServer e = new EllipticServer();
 		
@@ -43,9 +46,11 @@ public class RegisterIOT {
 		}
 		System.out.println("Hash: \n" + hash);
 		
+		
 		//Digitally sign the message using ECC
 		BigInteger[] signature = e.sign_message(hash);
 		System.out.println("Signature: \n" + signature[0] + ",\n" + signature[1] );
+		
 		
 		//Verify the signature at our end to make sure
 		if(e.verify_signature(signature, hash, e.public_key)){
@@ -55,11 +60,47 @@ public class RegisterIOT {
 			System.out.println("Signature verification tested: FAILED!");
 		}
 		
+		
+		//Send signature over to the server for verification
+		SecurityResponse(hash, message, signature, e.public_key);
+		
+		//Diffie hellman key generation
+		//Use server's public key, which is common knowledge
+		BigInteger[] public_key_third_party = new BigInteger[2];
+		public_key_third_party[0] = new BigInteger("84038106604411752799643332771244411978899367739386684558700701412922689385267");
+		public_key_third_party[1] = new BigInteger("28500647415800064233124391848320137466167033316937542514744643386221137162288");
+		BigInteger[] shared_key = e.generate_diffie_hellman_key(public_key_third_party);
+		
+		System.out.println("Diffie hellman shared secret key: ");
+		System.out.println(shared_key[0]);
+		
 		System.out.println("------------------------------------------------------------------------------");
 		System.out.println("------------------------------------------------------------------------------");
+		
+		//Now encrypt a piece of text into cipher text and let the server decrypt
+		String skey = shared_key[0].toString();
+		String symmetric_key = skey.substring(0, Math.min(skey.length(), 16));
+		//Limit key to 16 bytes for AES
+
+		String cipher = e.encrypt("cmpe 273 rocks!\u0000", "RandomInitVector", symmetric_key); //one character is null padded to make it 16 bytes
+		//should be a multiple of 16
+		
+		System.out.println("Cipher text: ");
+		System.out.println(cipher);
+		
+		
+		String text = e.decrypt(cipher, "RandomInitVector", symmetric_key);
+		
+		System.out.println("Plain text: ");
+		System.out.println(text);
+		
+		
+		
+		System.out.println("cipher = " + cipher + " with a length of " + cipher.length());
 
 		
-		SecurityResponse(hash, message, signature, e.public_key);
+		SendEncryptedData(hash, cipher, signature, e.public_key);
+		
 		
 		//RegisterIOTWithServer(2, 2, "5129094874");
 		//CheckForUpdates(1,2);
@@ -97,6 +138,40 @@ public class RegisterIOT {
 		System.out.println("---------------------------");
 		
 	}
+	
+	public static void SendEncryptedData (BigInteger hash, String cipher_text, 
+			BigInteger[] signature, BigInteger[] public_key){
+
+		ECCDatum ed = new ECCDatum();
+		ed.sethash(hash);
+		ed.setmessage(cipher_text);
+		ed.setsignature(signature[1]);
+		ed.set_public_key_x(public_key[0]);
+		ed.set_public_key_y(public_key[1]);
+		ed.setsignx(signature[0]);
+		
+		//testing
+		
+		String json_iot = ed.toString();
+		
+		//Push this to server
+		//Setup client
+		Client client = ClientBuilder.newClient();
+		WebTarget target = client.target("http://localhost:8080/com.nimma.jersey.server/rest");
+		
+		//Handle response
+		System.out.println("JSON from client : " + json_iot );
+		Response r2 = target.path("/security").path("/encrypt").request(MediaType.APPLICATION_JSON_TYPE).post(
+		Entity.entity(json_iot, MediaType.APPLICATION_JSON_TYPE));
+		
+		//Output
+		System.out.println("Server response:");
+		System.out.println(r2.readEntity(String.class));
+		System.out.println("---------------------------");
+
+}
+	
+	
 	
 	
 	public static void RegisterIOTWithServer(int id, int device_id, String phone){

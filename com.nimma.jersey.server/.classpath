@@ -18,5 +18,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/kprasad/Documents/eclipse_workspace/com.nimma.jersey.server/WebContent/WEB-INF/lib/commons-codec-1.10.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
